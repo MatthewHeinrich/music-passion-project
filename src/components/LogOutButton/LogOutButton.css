@@ -1,0 +1,8 @@
+.logout{
+    background-color: rgba(240, 248, 255, 0);
+    color: white;
+    border: 0;
+    font-size: 15px;
+    float: right;
+    margin-top: 1.5rem;
+}
