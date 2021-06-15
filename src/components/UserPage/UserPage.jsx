@@ -22,6 +22,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
+import axios from 'axios';
 // import DeleteIcon from '@material-ui/icons/Delete';
 // import FilterListIcon from '@material-ui/icons/FilterList';
 
@@ -48,6 +49,11 @@ function UserPage() {
     },
   });
 
+  function spotifyAuth() {
+    const code = '02561f65e246489e91ca1b6aec42c57e'
+    axios.get(`https://accounts.spotify.com/authorize?client_id=c00e5f657fec4ef4917d2527e73e66b3&response_type=${code}&redirect_uri=music-finder://callback&scope=user-read-private%20user-read-email&state=34fFs29kd09`)
+  }
+
   return (
     <div className="body">
       {/* <h2>Welcome, {user.username}!</h2>
@@ -56,30 +62,7 @@ function UserPage() {
         <input placeholder="Add Fav Music"></input>
         <button className='btn2'>Add Music</button>
       </div>
-      <div>
-        <div>
-          <div id="login">
-            <h1>First, log in to spotify</h1>
-            <a href="/spotifylogin">Log in</a>
-          </div>
-          <div id="loggedin">
-          </div>
-        </div>
-
-        <script id="loggedin-template" type="text/x-handlebars-template">
-          <h1>Logged in as </h1>
-          <img id="avatar" width="200" src="" />
-          <dl>
-            <dt>Display name</dt><dd></dd>
-            <dt>Username</dt><dd></dd>
-            <dt>Email</dt><dd></dd>
-            <dt>Spotify URI</dt><dd><a href=""></a></dd>
-            <dt>Link</dt><dd><a href=""></a></dd>
-            <dt>Profile Image</dt><dd></dd>
-          </dl>
-          <p><a href="/">Log in again</a></p>
-        </script>
-      </div>
+    
       <div>
         <TableContainer className='table' component={Paper}>
           <Table className='table1' size="small" aria-label="a dense table">
@@ -110,7 +93,7 @@ function UserPage() {
 
       </div>
       <div className='homeBtn'>
-        <button className="btn1">Recommended</button>
+        <button className="btn1" onClick={spotifyAuth()} >Recommended</button>
         <button className="btn1">Make Playlist</button>
       </div>
       <LogOutButton className="btn" />
