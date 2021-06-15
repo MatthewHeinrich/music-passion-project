@@ -1,6 +1,6 @@
 import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import './UserPage.css';
 
 import PropTypes from 'prop-types';
@@ -47,7 +47,7 @@ function UserPage() {
       minWidth: 650,
     },
   });
-  
+
   return (
     <div className="body">
       {/* <h2>Welcome, {user.username}!</h2>
@@ -57,36 +57,60 @@ function UserPage() {
         <button className='btn2'>Add Music</button>
       </div>
       <div>
-      <TableContainer className='table' component={Paper}>
-      <Table className='table1' size="small" aria-label="a dense table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Song Title</TableCell>
-            <TableCell align="right">Calories</TableCell>
-            <TableCell align="right">Fat&nbsp;(g)</TableCell>
-            <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-            <TableCell align="right">Protein&nbsp;(g)</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+        <div>
+          <div id="login">
+            <h1>First, log in to spotify</h1>
+            <a href="/spotifylogin">Log in</a>
+          </div>
+          <div id="loggedin">
+          </div>
+        </div>
+
+        <script id="loggedin-template" type="text/x-handlebars-template">
+          <h1>Logged in as </h1>
+          <img id="avatar" width="200" src="" />
+          <dl>
+            <dt>Display name</dt><dd></dd>
+            <dt>Username</dt><dd></dd>
+            <dt>Email</dt><dd></dd>
+            <dt>Spotify URI</dt><dd><a href=""></a></dd>
+            <dt>Link</dt><dd><a href=""></a></dd>
+            <dt>Profile Image</dt><dd></dd>
+          </dl>
+          <p><a href="/">Log in again</a></p>
+        </script>
+      </div>
+      <div>
+        <TableContainer className='table' component={Paper}>
+          <Table className='table1' size="small" aria-label="a dense table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Song Title</TableCell>
+                <TableCell align="right">Calories</TableCell>
+                <TableCell align="right">Fat&nbsp;(g)</TableCell>
+                <TableCell align="right">Carbs&nbsp;(g)</TableCell>
+                <TableCell align="right">Protein&nbsp;(g)</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => (
+                <TableRow key={row.name}>
+                  <TableCell component="th" scope="row">
+                    {row.name}
+                  </TableCell>
+                  <TableCell align="right">{row.calories}</TableCell>
+                  <TableCell align="right">{row.fat}</TableCell>
+                  <TableCell align="right">{row.carbs}</TableCell>
+                  <TableCell align="right">{row.protein}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
 
       </div>
       <div className='homeBtn'>
-        <button className="btn1">Find Music</button>
+        <button className="btn1">Recommended</button>
         <button className="btn1">Make Playlist</button>
       </div>
       <LogOutButton className="btn" />
